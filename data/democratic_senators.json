@@ -1,0 +1,300 @@
+[
+  {
+    "member_id": "B001288",
+    "last_updated": "2025-04-15T10:00:00Z",
+    "data_as_of_date": "2025-04-15",
+    "basic_info": {
+      "full_name": "Cory Anthony Booker",
+      "party": "D",
+      "state": "NJ",
+      "district": null,
+      "chamber": "Senate",
+      "official_website": "https://www.booker.senate.gov/",
+      "congress_gov_url": "https://www.congress.gov/member/cory-booker/B001288",
+      "committees": [
+        "Judiciary",
+        "Foreign Relations",
+        "Agriculture, Nutrition, and Forestry",
+        "Small Business and Entrepreneurship"
+      ],
+      "leadership_positions": [
+        "Chair of Strategic Communications Committee (Democratic Caucus)"
+      ]
+    },
+    "positions_on_antidemocratic_principles": {
+      "summary_assessment": "Strong Opposition",
+      "public_statements": {
+        "election_integrity_voting_rights": [
+          {
+            "quote_or_summary": "Participated in Senate Judiciary Committee hearings discussing voting rights with figures like Stacey Abrams and Sherrilyn Ifill. Framed the fight for voting rights as essential to American democracy.",
+            "date": "2023-06-15",
+            "source_url": "senate.gov/judiciary",
+            "source_name": "Senate Judiciary Committee Hearing Transcript"
+          }
+        ],
+        "january_6_events_investigations": [
+          {
+            "quote_or_summary": "During marathon Senate speech (March 31-April 1, 2025), explicitly referenced Jan 6th: '...when the people who attacked the police officers defending this building and American democracy on January 6th weren't just pardoned, but were celebrated by the man in the highest office in the land... Did we speak up?'",
+            "date": "2025-03-31",
+            "source_url": "senate.gov/floor",
+            "source_name": "Senate Floor Speech"
+          }
+        ],
+        "election_certification_processes": [
+          {
+            "quote_or_summary": "Consistently defended democratic processes and condemned the Jan 6th attempt to overturn the election. Supported the Electoral Count Reform Act.",
+            "date": "2023-01-06",
+            "source_url": "booker.senate.gov",
+            "source_name": "Senator Booker Press Statement"
+          }
+        ],
+        "democratic_checks_balances": [
+          {
+            "quote_or_summary": "Marathon speech directly protested against threats to democratic norms and institutions. Spoke against attacks on free press, lack of due process, and intimidation of universities.",
+            "date": "2025-03-31",
+            "source_url": "senate.gov/floor",
+            "source_name": "Senate Floor Speech"
+          }
+        ],
+        "judicial_independence": [
+          {
+            "quote_or_summary": "Expressed 'grave concern' over President Trump's attacks on the independence of the Department of Justice. Voted against Attorney General nominee to defend 'independence, transparency, and accountability of the Justice Department'.",
+            "date": "2025-03-15",
+            "source_url": "judiciary.senate.gov",
+            "source_name": "Senate Judiciary Committee Statement"
+          }
+        ],
+        "opposition_to_antidemocratic_movements": "Strong"
+      },
+      "legislative_actions": {
+        "sponsored_legislation_promoting_democracy": [
+          {
+            "bill_number": "S.4573 (117th)",
+            "bill_title": "Electoral Count Reform Act",
+            "status": "Co-sponsored",
+            "date": "2022-07-20",
+            "source_url": "congress.gov/bill/117th-congress/senate-bill/4573/cosponsors",
+            "source_name": "Congress.gov"
+          }
+        ],
+        "sponsored_legislation_undermining_democracy": [],
+        "cosponsored_legislation_promoting_democracy": [
+          {
+            "bill_number": "S.1 (117th)",
+            "bill_title": "For the People Act",
+            "status": "Co-sponsored",
+            "date": "2021-03-17",
+            "source_url": "congress.gov/bill/117th-congress/senate-bill/1/cosponsors",
+            "source_name": "Congress.gov"
+          },
+          {
+            "bill_number": "S.4 (117th)",
+            "bill_title": "John Lewis Voting Rights Advancement Act",
+            "status": "Co-sponsored",
+            "date": "2021-10-05",
+            "source_url": "congress.gov/bill/117th-congress/senate-bill/4/cosponsors",
+            "source_name": "Congress.gov"
+          }
+        ],
+        "cosponsored_legislation_undermining_democracy": [],
+        "key_votes": [
+          {
+            "bill_number": "Impeachment Trial (2nd)",
+            "vote_description": "Vote on conviction of Donald Trump for Incitement of Insurrection",
+            "vote_position": "Guilty",
+            "date": "2021-02-13",
+            "roll_call_url": "senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00059.htm",
+            "relevance_summary": "Voted to convict on the charge of inciting the Jan 6th insurrection."
+          }
+        ],
+        "committee_actions": [
+          {
+            "committee_name": "Senate Judiciary Committee",
+            "action_description": "Participated in hearings related to voting rights, judicial nominations, and criminal justice reform",
+            "date": "2023-06-15",
+            "source_url": "judiciary.senate.gov/hearings",
+            "source_name": "Senate Judiciary Committee"
+          }
+        ]
+      },
+      "public_engagement": {
+        "events_addressing_democracy": [
+          {
+            "event_description": "Town hall after record-breaking Senate speech where he urged attendees to stay engaged and push back against Trump administration's agenda",
+            "date": "2025-04-02",
+            "source_url": "nj.com/politics",
+            "source_name": "NJ.com report"
+          }
+        ],
+        "democracy_focused_coalitions": [],
+        "constituent_communications": []
+      },
+      "social_media_activity": {
+        "relevant_posts": [
+          {
+            "platform": "Twitter",
+            "content_summary": "Marathon Senate speech was streamed live, reaching hundreds of thousands",
+            "date": "2025-03-31",
+            "url": "twitter.com/corybooker",
+            "engagement_metrics": "High engagement"
+          }
+        ],
+        "amplification_of_disinformation": "False",
+        "engagement_with_extremist_rhetoric": "False"
+      },
+      "consistency_analysis": {
+        "timeline_summary": "Consistent record supporting voting rights, opposing election subversion, condemning January 6th attack, and defending democratic norms throughout Senate career",
+        "pattern_of_engagement": "Consistent",
+        "response_to_key_events": "Strong condemnation of Jan 6th attack, consistent advocacy for voting rights legislation, opposition to Attorney General nominee based on concerns about DOJ independence"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.booker.senate.gov/",
+        "name": "Senator Booker Official Website",
+        "retrieval_date": "2025-04-15"
+      },
+      {
+        "url": "https://www.congress.gov/member/cory-booker/B001288",
+        "name": "Congress.gov",
+        "retrieval_date": "2025-04-15"
+      }
+    ]
+  },
+  {
+    "member_id": "K000394",
+    "last_updated": "2025-04-15T10:00:00Z",
+    "data_as_of_date": "2025-04-15",
+    "basic_info": {
+      "full_name": "Andrew N. Kim",
+      "party": "D",
+      "state": "NJ",
+      "district": null,
+      "chamber": "Senate",
+      "official_website": "https://www.kim.senate.gov/",
+      "congress_gov_url": "https://www.congress.gov/member/andy-kim/K000394",
+      "committees": [
+        "Commerce, Science, and Transportation",
+        "Banking, Housing, and Urban Affairs",
+        "Health, Education, Labor, and Pensions",
+        "Homeland Security and Governmental Affairs",
+        "Special Committee on Aging"
+      ],
+      "leadership_positions": []
+    },
+    "positions_on_antidemocratic_principles": {
+      "summary_assessment": "Strong Opposition",
+      "public_statements": {
+        "election_integrity_voting_rights": [
+          {
+            "quote_or_summary": "Successfully challenged New Jersey's 'county line' ballot system, calling it 'unconstitutional'. Emphasized the need for fairness in democracy and advocated for uniform, randomized ballot drawings.",
+            "date": "2024-03-25",
+            "source_url": "nj.com/politics",
+            "source_name": "NJ.com report"
+          }
+        ],
+        "january_6_events_investigations": [
+          {
+            "quote_or_summary": "At Democratic National Convention: 'That night I walked into the rotunda The floor was covered in broken glass and garbage strewn with the chaos unleashed by Donald Trump And I thought to myself how did it get this bad. So I did the only thing I could think of I grabbed the trash bag and started cleaning up'.",
+            "date": "2024-08-20",
+            "source_url": "cnn.com/politics",
+            "source_name": "CNN DNC Coverage"
+          }
+        ],
+        "election_certification_processes": [
+          {
+            "quote_or_summary": "Voted to certify the 2020 presidential election results following the January 6th attack.",
+            "date": "2021-01-07",
+            "source_url": "house.gov/votes",
+            "source_name": "House Roll Call Votes"
+          }
+        ],
+        "democratic_checks_balances": [
+          {
+            "quote_or_summary": "Expressed concern about 'turbulence' and 'chaos' in politics and the need for stability. Has spoken about importance of checks and balances being more than just norms and danger when officials are 'unwilling or uninterested in behaving in a way that is befitting of our country'.",
+            "date": "2025-03-15",
+            "source_url": "kim.senate.gov/press",
+            "source_name": "Senator Kim Press Release"
+          }
+        ],
+        "judicial_independence": [],
+        "opposition_to_antidemocratic_movements": "Strong"
+      },
+      "legislative_actions": {
+        "sponsored_legislation_promoting_democracy": [],
+        "sponsored_legislation_undermining_democracy": [],
+        "cosponsored_legislation_promoting_democracy": [],
+        "cosponsored_legislation_undermining_democracy": [],
+        "key_votes": [
+          {
+            "bill_number": "H.R.1 (117th)",
+            "vote_description": "For the People Act",
+            "vote_position": "Yea",
+            "date": "2021-03-03",
+            "roll_call_url": "house.gov/roll-call-votes/2021",
+            "relevance_summary": "Voted for major voting rights and democracy reform legislation."
+          },
+          {
+            "bill_number": "H.R.4 (117th)",
+            "vote_description": "John Lewis Voting Rights Advancement Act",
+            "vote_position": "Yea",
+            "date": "2021-08-24",
+            "roll_call_url": "house.gov/roll-call-votes/2021",
+            "relevance_summary": "Voted for restoration of Voting Rights Act provisions."
+          },
+          {
+            "bill_number": "H.R.8873 (117th)",
+            "vote_description": "Electoral Count Reform Act",
+            "vote_position": "Yea",
+            "date": "2022-09-21",
+            "roll_call_url": "house.gov/roll-call-votes/2022",
+            "relevance_summary": "Voted for reforming the electoral vote counting process."
+          },
+          {
+            "bill_number": "Impeachment (2nd)",
+            "vote_description": "Second impeachment of Donald Trump",
+            "vote_position": "Yea",
+            "date": "2021-01-13",
+            "roll_call_url": "house.gov/roll-call-votes/2021",
+            "relevance_summary": "Voted to impeach for incitement of insurrection."
+          }
+        ],
+        "committee_actions": []
+      },
+      "public_engagement": {
+        "events_addressing_democracy": [
+          {
+            "event_description": "Actively holds town halls, reaching his 85th such event by March 2025",
+            "date": "2025-03-20",
+            "source_url": "kim.senate.gov/events",
+            "source_name": "Senator Kim's Office"
+          }
+        ],
+        "democracy_focused_coalitions": [],
+        "constituent_communications": []
+      },
+      "social_media_activity": {
+        "relevant_posts": [],
+        "amplification_of_disinformation": "False",
+        "engagement_with_extremist_rhetoric": "False"
+      },
+      "consistency_analysis": {
+        "timeline_summary": "Consistent pro-democracy stance from his actions on January 6th to his legislative votes in the House and campaign messaging focused on integrity and fairness. His challenge to the county line system reinforces this consistency.",
+        "pattern_of_engagement": "Consistent",
+        "response_to_key_events": "Notably helped clean Capitol after Jan 6th attack. Voted to certify 2020 election results, impeach Trump, and for voting rights legislation."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.kim.senate.gov/",
+        "name": "Senator Kim Official Website",
+        "retrieval_date": "2025-04-15"
+      },
+      {
+        "url": "https://www.congress.gov/member/andy-kim/K000394",
+        "name": "Congress.gov",
+        "retrieval_date": "2025-04-15"
+      }
+    ]
+  }
+]

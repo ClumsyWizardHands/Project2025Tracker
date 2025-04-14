@@ -1,0 +1,372 @@
+body {
+  margin: 0;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a2a57' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  position: relative;
+  color: #e0e0e0;
+}
+
+/* Cork board effect */
+.cork-board {
+  position: relative;
+  background-color: #8B4513;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23A0522D' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20zm20-20h20v20H20V0z'/%3E%3C/g%3E%3C/svg%3E");
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border: 10px solid #5D4037;
+  border-radius: 2px;
+}
+
+/* File folder effect */
+.file-folder {
+  position: relative;
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.file-folder::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-color: rgba(255, 152, 0, 0.3);
+  border-radius: 5px 5px 0 0;
+}
+
+/* Classified stamp effect */
+.classified-stamp {
+  position: relative;
+  display: inline-block;
+}
+
+.classified-stamp::after {
+  content: "CLASSIFIED";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  color: rgba(183, 28, 28, 0.7);
+  border: 2px solid rgba(183, 28, 28, 0.7);
+  padding: 5px 10px;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Confidential stamp effect */
+.confidential-stamp {
+  position: relative;
+  display: inline-block;
+}
+
+.confidential-stamp::after {
+  content: "CONFIDENTIAL";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  color: rgba(0, 184, 212, 0.7);
+  border: 2px solid rgba(0, 184, 212, 0.7);
+  padding: 5px 10px;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Redacted text effect */
+.redacted {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  background-color: #000;
+  padding: 0 2px;
+}
+
+/* Thumbtack effect */
+.thumbtack {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff9800;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.thumbtack::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+/* String connection effect */
+.string-connection {
+  position: absolute;
+  height: 2px;
+  background-color: #ff9800;
+  transform-origin: 0 0;
+  z-index: 5;
+}
+
+/* Coffee stain effect */
+.coffee-stain {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,0 C60,20 80,20 100,10 C90,30 90,50 100,70 C80,60 60,70 50,100 C40,70 20,60 0,70 C10,50 10,30 0,10 C20,20 40,20 50,0 Z' fill='rgba(101, 67, 33, 0.2)'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Highlighter effect */
+.highlight {
+  position: relative;
+  display: inline;
+}
+
+.highlight-yellow {
+  background: linear-gradient(180deg, transparent 60%, rgba(255, 152, 0, 0.3) 40%);
+}
+
+.highlight-blue {
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 184, 212, 0.3) 40%);
+}
+
+.highlight-red {
+  background: linear-gradient(180deg, transparent 60%, rgba(183, 28, 28, 0.3) 40%);
+}
+
+/* Paperclip effect */
+.paperclip {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.5,6V17.5A4,4 0 0,1 12.5,21.5A4,4 0 0,1 8.5,17.5V5A2.5,2.5 0 0,1 11,2.5A2.5,2.5 0 0,1 13.5,5V15.5A1,1 0 0,1 12.5,16.5A1,1 0 0,1 11.5,15.5V6H10V15.5A2.5,2.5 0 0,0 12.5,18A2.5,2.5 0 0,0 15,15.5V5A4,4 0 0,0 11,1A4,4 0 0,0 7,5V17.5A5.5,5.5 0 0,0 12.5,23A5.5,5.5 0 0,0 18,17.5V6H16.5Z' fill='rgba(255, 255, 255, 0.7)'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(15deg);
+  z-index: 10;
+}
+
+/* Typewriter text effect */
+.typewriter-text {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* Handwritten text effect */
+.handwritten-text {
+  font-family: 'Shadows Into Light', cursive;
+  line-height: 1.6;
+}
+
+/* Case file label */
+.case-file-label {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: rgba(255, 152, 0, 0.8);
+  color: #000;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: rotate(-2deg);
+}
+
+/* Evidence tag */
+.evidence-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: #1a2a57;
+  color: #fff;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-active {
+  background-color: #00c853;
+  box-shadow: 0 0 8px rgba(0, 200, 83, 0.5);
+}
+
+.status-pending {
+  background-color: #ff9800;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+}
+
+.status-closed {
+  background-color: #b71c1c;
+  box-shadow: 0 0 8px rgba(183, 28, 28, 0.5);
+}
+
+/* Main content area */
+.main-content {
+  min-height: calc(100vh - 64px - 100px); /* Adjust based on header and footer height */
+  padding: 20px 0;
+}
+
+/* App container */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Case title */
+.case-title {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.case-title::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ff9800;
+}
+
+/* Page turn animation */
+@keyframes pageTurn {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    transform: rotateY(-180deg);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.page-turn {
+  animation: pageTurn 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Conspiracy board connection */
+.connection-line {
+  position: absolute;
+  height: 2px;
+  background-color: #ff9800;
+  transform-origin: 0 0;
+  z-index: 1;
+}
+
+/* Polaroid photo effect */
+.polaroid {
+  background-color: #fff;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0) scale(1.05);
+  z-index: 10;
+}
+
+.polaroid-caption {
+  font-family: 'Shadows Into Light', cursive;
+  color: #000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Typewriter cursor effect */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #e0e0e0;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Tape effect */
+.tape {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(-2deg);
+  z-index: 5;
+}
+
+.tape-top-left {
+  top: -10px;
+  left: 20px;
+  transform: rotate(-10deg);
+}
+
+.tape-top-right {
+  top: -10px;
+  right: 20px;
+  transform: rotate(10deg);
+}
+
+.tape-bottom-left {
+  bottom: -10px;
+  left: 20px;
+  transform: rotate(10deg);
+}
+
+.tape-bottom-right {
+  bottom: -10px;
+  right: 20px;
+  transform: rotate(-10deg);
+}

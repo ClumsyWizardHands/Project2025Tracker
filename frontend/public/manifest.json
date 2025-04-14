@@ -1,0 +1,65 @@
+{
+  "short_name": "Fight the Quiet Coup",
+  "name": "Fight Against the Quiet Coup - Track politicians' positions on Project 2025",
+  "description": "Track and analyze politicians' positions on Project 2025 policies",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ff9800",
+  "background_color": "#1e1e1e",
+  "categories": ["politics", "news", "government", "tracking"],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Dashboard view of Fight Against the Quiet Coup"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile view of politician profiles in Fight Against the Quiet Coup"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Politicians",
+      "short_name": "Politicians",
+      "description": "View politician profiles",
+      "url": "/politicians",
+      "icons": [{ "src": "shortcut-politicians.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View analytics dashboard",
+      "url": "/analytics/dashboard",
+      "icons": [{ "src": "shortcut-dashboard.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

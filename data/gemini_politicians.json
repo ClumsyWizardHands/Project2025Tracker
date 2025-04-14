@@ -1,0 +1,165 @@
+[
+  {
+    "member_id": "B001230",
+    "last_updated": "2025-04-15T10:00:00Z",
+    "data_as_of_date": "2025-04-15",
+    "basic_info": {
+      "full_name": "Tammy Baldwin",
+      "party": "D",
+      "state": "WI",
+      "district": null,
+      "chamber": "Senate",
+      "official_website": "https://www.baldwin.senate.gov/",
+      "congress_gov_url": "https://www.congress.gov/member/tammy-baldwin/B001230"
+    },
+    "positions_on_antidemocratic_principles": {
+      "summary_assessment": "Strong",
+      "public_statements": {
+        "opposition_to_antidemocratic_movements": "Strong"
+      },
+      "social_media_activity": {
+        "amplification_of_disinformation": "False",
+        "engagement_with_extremist_rhetoric": "False"
+      },
+      "consistency_analysis": {
+        "timeline_summary": "Longstanding record supporting voting rights expansion and opposing voter suppression efforts, dating back to House tenure and continuing in the Senate.",
+        "pattern_of_engagement": "Consistent",
+        "response_to_key_events": "Strongly condemned Jan 6th attack and the 'big lie'."
+      }
+    },
+    "scores": {
+      "public_statements": 0,
+      "legislative_action": 0,
+      "public_engagement": 20,
+      "social_media": 15,
+      "consistency": 10,
+      "total_score": 45
+    }
+  },
+  {
+    "member_id": "B001299",
+    "last_updated": "2025-04-15T10:00:00Z",
+    "data_as_of_date": "2025-04-15",
+    "basic_info": {
+      "full_name": "James Edward Banks",
+      "party": "R",
+      "state": "IN",
+      "district": null,
+      "chamber": "Senate",
+      "official_website": "https://www.banks.senate.gov/",
+      "congress_gov_url": "https://www.congress.gov/member/jim-banks/B001299"
+    },
+    "positions_on_antidemocratic_principles": {
+      "summary_assessment": "Supportive",
+      "public_statements": {
+        "opposition_to_antidemocratic_movements": "Supportive"
+      },
+      "social_media_activity": {
+        "amplification_of_disinformation": "True",
+        "engagement_with_extremist_rhetoric": "Insufficient Data"
+      },
+      "consistency_analysis": {
+        "timeline_summary": "Consistently aligned with efforts to challenge the 2020 election results, including signing onto the Texas lawsuit and voting against certification.",
+        "pattern_of_engagement": "Consistent",
+        "response_to_key_events": "Actively supported challenges to the 2020 election outcome."
+      }
+    },
+    "scores": {
+      "public_statements": 0,
+      "legislative_action": 0,
+      "public_engagement": 0,
+      "social_media": 0,
+      "consistency": 0,
+      "total_score": 0
+    }
+  },
+  {
+    "member_id": "B001261",
+    "last_updated": "2025-04-15T10:00:00Z",
+    "data_as_of_date": "2025-04-15",
+    "basic_info": {
+      "full_name": "John Anthony Barrasso III",
+      "party": "R",
+      "state": "WY",
+      "district": null,
+      "chamber": "Senate",
+      "official_website": "https://www.barrasso.senate.gov/",
+      "congress_gov_url": "https://www.congress.gov/member/john-barrasso/B001261"
+    },
+    "positions_on_antidemocratic_principles": {
+      "summary_assessment": "Minimal Opposition",
+      "public_statements": {
+        "opposition_to_antidemocratic_movements": "Minimal"
+      },
+      "legislative_actions": {
+        "key_votes": [
+          {
+            "bill_number": "S.4573 (117th)",
+            "vote_description": "Vote on passage of Omnibus funding bill including Electoral Count Reform Act",
+            "vote_position": "Yea",
+            "date": "2022-12-22",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1172/vote_117_2_00399.htm",
+            "relevance_summary": "Voted for the omnibus bill containing the Electoral Count Reform Act, aimed at preventing future attempts to overturn presidential election results."
+          },
+          {
+            "bill_number": "S.4 (117th)",
+            "vote_description": "Cloture vote on motion to proceed to John R. Lewis Voting Rights Advancement Act",
+            "vote_position": "Nay",
+            "date": "2021-11-03",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00459.htm",
+            "relevance_summary": "Voted against advancing the John Lewis Voting Rights Advancement Act."
+          },
+          {
+            "bill_number": "S.1 (117th)",
+            "vote_description": "Cloture vote on motion to proceed to For the People Act",
+            "vote_position": "Nay",
+            "date": "2021-06-22",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00246.htm",
+            "relevance_summary": "Voted against advancing the For the People Act."
+          },
+          {
+            "bill_number": "Impeachment Trial (2nd)",
+            "vote_description": "Vote on conviction of Donald Trump for Incitement of Insurrection",
+            "vote_position": "Not Guilty",
+            "date": "2021-02-13",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00059.htm",
+            "relevance_summary": "Voted to acquit on the charge of inciting the Jan 6th insurrection."
+          },
+          {
+            "bill_number": "PA Electoral Vote",
+            "vote_description": "Objection to counting the electoral votes of Pennsylvania",
+            "vote_position": "Nay",
+            "date": "2021-01-07",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00002.htm",
+            "relevance_summary": "Voted against objecting to Pennsylvania's electoral votes."
+          },
+          {
+            "bill_number": "AZ Electoral Vote",
+            "vote_description": "Objection to counting the electoral votes of Arizona",
+            "vote_position": "Nay",
+            "date": "2021-01-07",
+            "roll_call_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00001.htm",
+            "relevance_summary": "Voted against objecting to Arizona's electoral votes."
+          }
+        ]
+      },
+      "social_media_activity": {
+        "amplification_of_disinformation": "Insufficient Data",
+        "engagement_with_extremist_rhetoric": "Insufficient Data"
+      },
+      "consistency_analysis": {
+        "timeline_summary": "Voted to certify the 2020 election results. Voted to acquit in the second impeachment trial related to the Jan 6th insurrection.",
+        "pattern_of_engagement": "Consistent (within party lines)",
+        "response_to_key_events": "Did not object to 2020 election certification. Voted against conviction after Jan 6th."
+      }
+    },
+    "scores": {
+      "public_statements": 0,
+      "legislative_action": 13,
+      "public_engagement": 6,
+      "social_media": 8,
+      "consistency": 10,
+      "total_score": 37
+    }
+  }
+]

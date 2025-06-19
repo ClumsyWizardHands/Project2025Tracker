@@ -13,7 +13,7 @@ const {
 
 // Create Sequelize instance
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: DB_HOST,
+  host: NODE_ENV === 'production' ? DB_HOST : 'localhost',
   port: DB_PORT,
   dialect: 'postgres',
   logging: NODE_ENV === 'development' ? console.log : false,

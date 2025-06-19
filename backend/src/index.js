@@ -59,6 +59,7 @@ app.use(`${API_PREFIX}/politicians`, require('./routes/politicians'));
 app.use(`${API_PREFIX}/statements`, require('./routes/statements'));
 app.use(`${API_PREFIX}/scores`, require('./routes/scores'));
 app.use(`${API_PREFIX}/scoring`, require('./routes/scoring'));
+app.use(`${API_PREFIX}/enhanced-scoring`, require('./routes/enhancedScoring'));
 app.use(`${API_PREFIX}/auth`, require('./routes/auth'));
 
 // Error handling middleware

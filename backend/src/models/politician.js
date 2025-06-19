@@ -1,27 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-/**
- * Politician model
- * @typedef {Object} Politician
- * @property {string} id - UUID primary key
- * @property {string} name - Politician's full name
- * @property {string} party - Political party affiliation
- * @property {string} state - State represented
- * @property {string} position - Current political position
- * @property {string} bio - Biographical information
- * @property {string} photo_url - URL to politician's photo
- * @property {string} website_url - URL to politician's website
- * @property {string} twitter_handle - Twitter handle without @
- * @property {Date} created_at - Creation timestamp
- * @property {Date} updated_at - Last update timestamp
- */
 const Politician = sequelize.define(
   'Politician',
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING(20),
       primaryKey: true,
     },
     name: {
@@ -74,6 +58,11 @@ const Politician = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: true,
     },
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -106,6 +95,77 @@ Politician.associate = (models) => {
     foreignKey: 'politician_id',
     as: 'scores',
   });
+  
+  // A politician has one politician score
+  Politician.hasOne(models.PoliticianScore, {
+    foreignKey: 'politician_id',
+    as: 'politicianScore',
+  });
+  
+  // A politician has many scoring actions
+  Politician.hasMany(models.ScoringAction, {
+    foreignKey: 'politician_id',
+    as: 'scoringActions',
+  });
+  
+  // A politician has many committee memberships
+  Politician.hasMany(models.PoliticianCommittee, {
+    foreignKey: 'politician_id',
+    as: 'committees',
+  });
+};
+
+// Instance methods
+Politician.prototype.getFullProfile = async function() {
+  const politicianScore = await sequelize.models.PoliticianScore.findOne({
+    where: { politician_id: this.id }
+  });
+  
+  const committees = await sequelize.models.PoliticianCommittee.findAll({
+    where: { politician_id: this.id }
+  });
+  
+  const recentActions = await sequelize.models.ScoringAction.findAll({
+    where: { 
+      politician_id: this.id,
+      verification_status: 'verified'
+    },
+    order: [['action_date', 'DESC']],
+    limit: 5,
+    include: [{
+      model: sequelize.models.EvidenceSource,
+      as: 'evidenceSources'
+    }]
+  });
+  
+  const contradictions = await sequelize.models.ScoringAction.findAll({
+    where: { 
+      politician_id: this.id,
+      contradiction_flag: true
+    },
+    limit: 5
+  });
+  
+  return {
+    id: this.id,
+    name: this.name,
+    party: this.party,
+    state: this.state,
+    position: this.position,
+    bio: this.bio,
+    photo_url: this.photo_url,
+    website_url: this.website_url,
+    twitter_handle: this.twitter_handle,
+    score: politicianScore ? politicianScore.getDetailedAssessment() : null,
+    committees: committees.map(c => ({
+      name: c.committee_name,
+      leadership: c.leadership_position
+    })),
+    recent_actions: recentActions,
+    contradictions: contradictions,
+    status: politicianScore ? politicianScore.getStatus() : 'UNKNOWN',
+    resistance_level: politicianScore ? politicianScore.getResistanceLevel() : null
+  };
 };
 
 module.exports = Politician;

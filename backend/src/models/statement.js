@@ -25,7 +25,7 @@ const Statement = sequelize.define(
       primaryKey: true,
     },
     politician_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING(20),
       allowNull: false,
       references: {
         model: 'politicians',

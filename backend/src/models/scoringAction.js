@@ -17,6 +17,14 @@ const sequelize = require('../config/database');
  * @property {string} verified_by - UUID of the user who verified the action
  * @property {Date} verified_at - When the action was verified
  * @property {number} time_value - Time decay value (0-1)
+ * @property {string} strategic_value - Strategic value (High/Medium/Low)
+ * @property {boolean} has_action_follow_up - Whether the action has follow-up
+ * @property {string} impact_level - Impact level (High/Medium/Low)
+ * @property {string} risk_level - Risk level (High/Medium/Low)
+ * @property {string} strategic_function - Strategic function (Disrupt/Inform/Mobilize)
+ * @property {number} performance_modifier - Performance modifier (0-1)
+ * @property {boolean} contradiction_flag - Whether this action contradicts another
+ * @property {string} contradiction_notes - Notes about contradictions
  * @property {string} created_by - UUID of the user who created the action
  * @property {Date} created_at - Creation timestamp
  * @property {Date} updated_at - Last update timestamp
@@ -30,7 +38,7 @@ const ScoringAction = sequelize.define(
       primaryKey: true,
     },
     politician_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING(20),
       allowNull: false,
       references: {
         model: 'politicians',
@@ -104,6 +112,58 @@ const ScoringAction = sequelize.define(
         max: 1,
       },
     },
+    // New fields for enhanced scoring
+    strategic_value: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      validate: {
+        isIn: [['High', 'Medium', 'Low']]
+      }
+    },
+    has_action_follow_up: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    impact_level: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      validate: {
+        isIn: [['High', 'Medium', 'Low']]
+      }
+    },
+    risk_level: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      validate: {
+        isIn: [['High', 'Medium', 'Low']]
+      }
+    },
+    strategic_function: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      validate: {
+        isIn: [['Disrupt', 'Inform', 'Mobilize']]
+      }
+    },
+    performance_modifier: {
+      type: DataTypes.DECIMAL(3, 2),
+      allowNull: false,
+      defaultValue: 1.0,
+      validate: {
+        min: 0,
+        max: 1,
+      },
+    },
+    contradiction_flag: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    contradiction_notes: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     created_by: {
       type: DataTypes.UUID,
       allowNull: true,
@@ -150,6 +210,12 @@ ScoringAction.associate = (models) => {
     foreignKey: 'created_by',
     as: 'creator',
   });
+  
+  // A scoring action has many evidence sources
+  ScoringAction.hasMany(models.EvidenceSource, {
+    foreignKey: 'scoring_action_id',
+    as: 'evidenceSources',
+  });
 };
 
 // Instance methods
@@ -185,6 +251,19 @@ ScoringAction.prototype.calculateTimeValue = function() {
   }
 };
 
+// Calculate performance modifier based on action type and follow-up
+ScoringAction.prototype.calculatePerformanceModifier = function() {
+  if (this.category === 'social_media' && !this.has_action_follow_up) {
+    return 0.5; // 0.5x modifier for social posts without follow-up
+  }
+  
+  if (this.category === 'public_engagement' && this.strategic_value === 'Low') {
+    return 0.3; // 0.3x for ceremonial engagements
+  }
+  
+  return 1.0; // No discount for other actions
+};
+
 // Static methods
 ScoringAction.findByPoliticianId = async function(politicianId, options = {}) {
   const { category, verification_status, limit = 50, offset = 0 } = options;
@@ -214,6 +293,10 @@ ScoringAction.findByPoliticianId = async function(politicianId, options = {}) {
         model: sequelize.models.User,
         as: 'verifier',
         attributes: ['id', 'username']
+      },
+      {
+        model: sequelize.models.EvidenceSource,
+        as: 'evidenceSources',
       }
     ]
   });
@@ -234,6 +317,10 @@ ScoringAction.getPendingActions = async function(limit = 20) {
         model: sequelize.models.User,
         as: 'creator',
         attributes: ['id', 'username']
+      },
+      {
+        model: sequelize.models.EvidenceSource,
+        as: 'evidenceSources',
       }
     ]
   });
@@ -254,6 +341,27 @@ ScoringAction.getRecentVerifiedActions = async function(limit = 20) {
         model: sequelize.models.User,
         as: 'verifier',
         attributes: ['id', 'username']
+      },
+      {
+        model: sequelize.models.EvidenceSource,
+        as: 'evidenceSources',
+      }
+    ]
+  });
+};
+
+// Find contradicting actions for a politician
+ScoringAction.findContradictions = async function(politicianId) {
+  return await this.findAll({
+    where: { 
+      politician_id: politicianId,
+      contradiction_flag: true
+    },
+    order: [['action_date', 'DESC']],
+    include: [
+      {
+        model: sequelize.models.EvidenceSource,
+        as: 'evidenceSources',
       }
     ]
   });

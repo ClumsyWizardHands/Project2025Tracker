@@ -5,14 +5,22 @@
   "main": "index.js",
   "scripts": {
     "fetch-members": "node fetch_congress_members.js",
+    "fetch-members-api": "node fetch_congress_members_from_api.js",
+    "reconcile": "node reconcile_member_data.js",
     "research": "node research_project2025.js",
     "score": "node score_politicians.js",
     "import": "node import_to_database.js",
+    "import-members": "node import_congress_members.js",
     "process-gemini": "node process_gemini_data.js ../data/gemini_raw_data.json",
     "import-gemini-data": "node import_gemini_data.js",
     "import-gemini-statements": "node import_gemini_statements.js",
     "import-all-gemini": "node import_all_gemini_data.js",
     "import-democratic-senators": "node import_democratic_senators.js",
+    "import-juan-vargas": "node import_juan_vargas_data.js",
+    "import-tammy-baldwin": "node import_tammy_baldwin_data.js",
+    "import-john-barrasso": "node import_john_barrasso_data.js",
+    "import-michael-bennet": "node import_michael_bennet_data.js",
+    "apply-enhanced-scoring": "node apply_enhanced_scoring_schema.js",
     "run-backend": "node run_backend.js",
     "run-frontend": "node run_frontend.js",
     "run-app": "node run_app.js",
@@ -20,13 +28,13 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
     "dotenv": "^16.3.1",
-    "cheerio": "^1.0.0-rc.12",
-    "puppeteer": "^21.5.2",
-    "twitter-api-v2": "^1.15.1",
     "pg": "^8.11.3",
-    "sequelize": "^6.35.1"
+    "puppeteer": "^22.10.0",
+    "sequelize": "^6.35.1",
+    "twitter-api-v2": "^1.15.1"
   }
 }

@@ -13,13 +13,21 @@ import {
   CardActions,
   Button,
   Chip,
-  Link
+  Link,
+  Collapse
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import WarningIcon from '@mui/icons-material/Warning';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useAuth } from '../contexts/AuthContext';
+import JuanVargasCompactPanel from '../components/politicians/JuanVargasCompactPanel';
+import TammyBaldwinCompactPanel from '../components/politicians/TammyBaldwinCompactPanel';
+import JohnBarrassoCompactPanel from '../components/politicians/JohnBarrassoCompactPanel';
+import MichaelBennetCompactPanel from '../components/politicians/MichaelBennetCompactPanel';
 
 const StatementsPage = () => {
   const { isAdmin } = useAuth();
@@ -27,49 +35,109 @@ const StatementsPage = () => {
   const [error, setError] = useState('');
   const [statements, setStatements] = useState([]);
   
+  // State for expanded assessments
+  const [expandedAssessments, setExpandedAssessments] = useState({});
+  
+  // Toggle assessment expansion
+  const toggleAssessment = (politicianId) => {
+    setExpandedAssessments(prev => ({
+      ...prev,
+      [politicianId]: !prev[politicianId]
+    }));
+  };
+  
   useEffect(() => {
     // Mock data for demonstration
     setTimeout(() => {
       setStatements([
         {
           id: '1',
-          content: 'I strongly oppose Project 2025 and everything it stands for.',
-          date: new Date(),
-          source_url: 'https://example.com',
-          source_name: 'Example News',
-          context: 'During a press conference',
+          content: 'Project 2025 would be detrimental to essential programs like Medicaid and SNAP that millions of Americans rely on. I strongly oppose these harmful policies that would hurt the most vulnerable in our communities.',
+          date: new Date('2025-04-10'),
+          source_url: 'https://example.com/vargas-statement',
+          source_name: 'Press Conference',
+          context: 'Rep. Vargas made this statement during a press conference addressing budget proposals that would impact social programs.',
           is_verified: true,
           politician: {
-            id: '1',
-            name: 'Jane Doe',
+            id: 'juan-vargas',
+            name: 'Juan Vargas',
             party: 'Democrat',
             state: 'California',
-            position: 'Senator'
+            position: 'Representative',
+            district: 'CA-52'
           },
           tags: [
             { id: '1', name: 'opposition' },
-            { id: '2', name: 'press conference' }
-          ]
+            { id: '2', name: 'press conference' },
+            { id: '3', name: 'social programs' }
+          ],
+          has_assessment: true
         },
         {
           id: '2',
-          content: 'Project 2025 represents a threat to our democratic institutions.',
-          date: new Date(),
-          source_url: 'https://example.com',
-          source_name: 'Example News',
-          context: 'Interview on national television',
-          is_verified: false,
+          content: 'Project 2025 represents a direct threat to our democratic institutions and the rights of all Americans. I will continue to fight against these dangerous policies that would undermine our healthcare system, roll back LGBTQ+ rights, and weaken our democratic processes.',
+          date: new Date('2025-03-15'),
+          source_url: 'https://example.com/baldwin-statement-1',
+          source_name: 'Press Conference',
+          context: 'Senator Baldwin made this statement during a press conference addressing Project 2025\'s potential impact on healthcare access.',
+          is_verified: true,
           politician: {
-            id: '2',
-            name: 'John Smith',
+            id: 'tammy-baldwin',
+            name: 'Tammy Baldwin',
             party: 'Democrat',
-            state: 'New York',
-            position: 'Representative'
+            state: 'Wisconsin',
+            position: 'U.S. Senator'
           },
           tags: [
             { id: '1', name: 'opposition' },
-            { id: '3', name: 'interview' }
-          ]
+            { id: '4', name: 'healthcare' },
+            { id: '5', name: 'LGBTQ+ rights' }
+          ],
+          has_assessment: true
+        },
+        {
+          id: '3',
+          content: 'President Biden\'s energy policies are hurting American families. We need to increase domestic oil and gas production to lower costs and ensure our energy independence.',
+          date: new Date('2025-02-15'),
+          source_url: 'https://example.com/barrasso-statement-2',
+          source_name: 'Press Conference',
+          context: 'Senator Barrasso delivered this statement during a press conference on energy policy.',
+          is_verified: true,
+          politician: {
+            id: 'john-barrasso',
+            name: 'John Barrasso',
+            party: 'Republican',
+            state: 'Wyoming',
+            position: 'U.S. Senator'
+          },
+          tags: [
+            { id: '7', name: 'energy policy' },
+            { id: '9', name: 'fossil fuels' },
+            { id: '2', name: 'press conference' }
+          ],
+          has_assessment: true
+        },
+        {
+          id: '4',
+          content: 'There is not a person in the Senate who\'s more worried about what Trump is doing to our democracy and our economy than I am.',
+          date: new Date('2025-03-15'),
+          source_url: 'https://example.com/bennet-statement-1',
+          source_name: 'Press Conference',
+          context: 'Senator Bennet made this statement during a press conference addressing former President Trump\'s influence on democracy.',
+          is_verified: true,
+          politician: {
+            id: 'michael-bennet',
+            name: 'Michael Bennet',
+            party: 'Democrat',
+            state: 'Colorado',
+            position: 'U.S. Senator'
+          },
+          tags: [
+            { id: '1', name: 'opposition' },
+            { id: '2', name: 'press conference' },
+            { id: '10', name: 'democracy' }
+          ],
+          has_assessment: true
         }
       ]);
       setLoading(false);
@@ -239,6 +307,43 @@ const StatementsPage = () => {
                 />
               ))}
             </Box>
+          )}
+          
+          {/* Assessment Panels */}
+          {statement.has_assessment && (
+            <>
+              <Divider sx={{ borderColor: 'rgba(255, 152, 0, 0.3)', my: 2 }} />
+              
+              <Box>
+                <Button
+                  color="secondary"
+                  size="small"
+                  onClick={() => toggleAssessment(politician.id)}
+                  startIcon={expandedAssessments[politician.id] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                  sx={{ mb: 1 }}
+                >
+                  {expandedAssessments[politician.id] ? 'Hide Assessment' : 'Show Assessment'}
+                </Button>
+                
+                <Collapse in={expandedAssessments[politician.id]}>
+                  <Box sx={{ mt: 1 }}>
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      className="typewriter-text"
+                      sx={{ mb: 2 }}
+                    >
+                      <span className="highlight highlight-yellow">Enhanced Assessment:</span> This statement is part of our overall evaluation of {politician.name}'s stance on Project 2025.
+                    </Typography>
+                    
+                    {politician.id === 'juan-vargas' && <JuanVargasCompactPanel />}
+                    {politician.id === 'tammy-baldwin' && <TammyBaldwinCompactPanel />}
+                    {politician.id === 'john-barrasso' && <JohnBarrassoCompactPanel />}
+                    {politician.id === 'michael-bennet' && <MichaelBennetCompactPanel />}
+                  </Box>
+                </Collapse>
+              </Box>
+            </>
           )}
         </CardContent>
         

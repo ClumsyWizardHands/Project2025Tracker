@@ -23,6 +23,11 @@ import PoliticianFormPage from './pages/PoliticianFormPage';
 import StatementsPage from './pages/StatementsPage';
 import StatementDetailPage from './pages/StatementDetailPage';
 import ScoresPage from './pages/ScoresPage';
+import ResistanceLevelPage from './pages/ResistanceLevelPage';
+import JuanVargasPage from './pages/JuanVargasPage';
+import TammyBaldwinPage from './pages/TammyBaldwinPage';
+import JohnBarrassoPage from './pages/JohnBarrassoPage';
+import MichaelBennetPage from './pages/MichaelBennetPage';
 import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -61,6 +66,11 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/politicians" element={<PoliticiansPage />} />
                 <Route path="/politicians/:id" element={<PoliticianDetailPage />} />
+            <Route path="/politicians/juan-vargas" element={<JuanVargasPage />} />
+            <Route path="/politicians/tammy-baldwin" element={<TammyBaldwinPage />} />
+            <Route path="/politicians/john-barrasso" element={<JohnBarrassoPage />} />
+            <Route path="/politicians/michael-bennet" element={<MichaelBennetPage />} />
+                <Route path="/resistance-level/:level" element={<ResistanceLevelPage />} />
                 <Route path="/statements" element={<StatementsPage />} />
                 <Route path="/statements/:id" element={<StatementDetailPage />} />
                 <Route path="/submit-evidence" element={<SubmitEvidencePage />} />

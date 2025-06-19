@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link as RouterLink } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -32,9 +32,11 @@ import {
   LocationOn as LocationIcon,
   Person as PersonIcon,
   ArrowBack as ArrowBackIcon,
+  Assessment as AssessmentIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import EnhancedScoreBreakdown from '../components/scores/EnhancedScoreBreakdown';
 
 // Tab panel component
 function TabPanel(props) {
@@ -346,11 +348,13 @@ const PoliticianDetailPage = () => {
             onChange={handleTabChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth"
+            variant="scrollable"
+            scrollButtons="auto"
           >
             <Tab label="Statements" />
             <Tab label="Voting History" />
             <Tab label="Score Breakdown" />
+            <Tab label="Enhanced Assessment" />
           </Tabs>
           
           <Divider />
@@ -496,6 +500,25 @@ const PoliticianDetailPage = () => {
                 </Button>
               </Box>
             )}
+          </TabPanel>
+          
+          {/* Enhanced Assessment tab */}
+          <TabPanel value={tabValue} index={3}>
+            <EnhancedScoreBreakdown politicianId={id} />
+            
+            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', gap: 2 }}>
+              {politician.politicianScore && politician.politicianScore.resistance_level && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={RouterLink}
+                  to={`/resistance-level/${politician.politicianScore.resistance_level}`}
+                  startIcon={<AssessmentIcon />}
+                >
+                  View All {politician.politicianScore.resistance_level}s
+                </Button>
+              )}
+            </Box>
           </TabPanel>
         </Paper>
       </Box>

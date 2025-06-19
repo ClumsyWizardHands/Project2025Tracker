@@ -26,6 +26,10 @@ import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import PoliticianCard from '../components/politicians/PoliticianCard';
+import JuanVargasCompactPanel from '../components/politicians/JuanVargasCompactPanel';
+import TammyBaldwinCompactPanel from '../components/politicians/TammyBaldwinCompactPanel';
+import JohnBarrassoCompactPanel from '../components/politicians/JohnBarrassoCompactPanel';
+import MichaelBennetCompactPanel from '../components/politicians/MichaelBennetCompactPanel';
 
 // Helper function to parse query parameters
 const useQuery = () => {
@@ -60,12 +64,57 @@ const PoliticiansPage = () => {
     positions: [],
   });
   
+  // Check if search includes featured politicians
+  const [showJuanVargas, setShowJuanVargas] = useState(false);
+  const [showTammyBaldwin, setShowTammyBaldwin] = useState(false);
+  const [showJohnBarrasso, setShowJohnBarrasso] = useState(false);
+  const [showMichaelBennet, setShowMichaelBennet] = useState(false);
+  
   // Fetch politicians data
   useEffect(() => {
     const fetchPoliticians = async () => {
       try {
         setLoading(true);
         setError('');
+        
+        // Check if search includes featured politicians
+        const searchLower = filters.search.toLowerCase();
+        
+        // Check for Juan Vargas
+        setShowJuanVargas(
+          searchLower.includes('juan') || 
+          searchLower.includes('vargas') || 
+          searchLower.includes('ca-52') ||
+          (filters.state === 'California' && filters.party === 'Democrat') ||
+          filters.search === ''  // Also show when no search is applied
+        );
+        
+        // Check for Tammy Baldwin
+        setShowTammyBaldwin(
+          searchLower.includes('tammy') || 
+          searchLower.includes('baldwin') || 
+          searchLower.includes('wisconsin') ||
+          (filters.state === 'Wisconsin' && filters.party === 'Democrat') ||
+          filters.search === ''  // Also show when no search is applied
+        );
+        
+        // Check for John Barrasso
+        setShowJohnBarrasso(
+          searchLower.includes('john') || 
+          searchLower.includes('barrasso') || 
+          searchLower.includes('wyoming') ||
+          (filters.state === 'Wyoming' && filters.party === 'Republican') ||
+          filters.search === ''  // Also show when no search is applied
+        );
+        
+        // Check for Michael Bennet
+        setShowMichaelBennet(
+          searchLower.includes('michael') || 
+          searchLower.includes('bennet') || 
+          searchLower.includes('colorado') ||
+          (filters.state === 'Colorado' && filters.party === 'Democrat') ||
+          filters.search === ''  // Also show when no search is applied
+        );
         
         // Build query parameters
         const params = new URLSearchParams();
@@ -378,13 +427,117 @@ const PoliticiansPage = () => {
           <Alert severity="error" sx={{ my: 2 }}>
             {error}
           </Alert>
-        ) : politicians.length === 0 ? (
+        ) : politicians.length === 0 && !showJuanVargas ? (
           <Alert severity="info" sx={{ my: 2 }}>
             No politicians found matching your criteria.
           </Alert>
         ) : (
           <>
+            {/* Featured Assessments */}
+            {(showJuanVargas || showTammyBaldwin || showJohnBarrasso || showMichaelBennet) && (
+              <Box sx={{ mb: 4 }}>
+                <Paper sx={{ p: 3, mb: 2, borderLeft: '4px solid #2196f3' }}>
+                  <Typography variant="h5" gutterBottom>
+                    Featured Assessments
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" paragraph>
+                    These politicians have been analyzed using our enhanced scoring methodology:
+                  </Typography>
+                  
+                  {showJuanVargas && (
+                    <Box onClick={() => navigate('/politicians/juan-vargas')} sx={{ cursor: 'pointer', mb: 2 }}>
+                      <JuanVargasCompactPanel />
+                    </Box>
+                  )}
+                  
+                  {showTammyBaldwin && (
+                    <Box onClick={() => navigate('/politicians/tammy-baldwin')} sx={{ cursor: 'pointer', mb: 2 }}>
+                      <TammyBaldwinCompactPanel />
+                    </Box>
+                  )}
+                  
+                  {showJohnBarrasso && (
+                    <Box onClick={() => navigate('/politicians/john-barrasso')} sx={{ cursor: 'pointer', mb: 2 }}>
+                      <JohnBarrassoCompactPanel />
+                    </Box>
+                  )}
+                  
+                  {showMichaelBennet && (
+                    <Box onClick={() => navigate('/politicians/michael-bennet')} sx={{ cursor: 'pointer' }}>
+                      <MichaelBennetCompactPanel />
+                    </Box>
+                  )}
+                </Paper>
+              </Box>
+            )}
+            
+            {/* Add featured politicians to the politicians list if they're not already there */}
             <Grid container spacing={3}>
+              {/* If we're showing Juan Vargas but he's not in the politicians list, add a card for him */}
+              {showJuanVargas && !politicians.some(p => p.id === 'juan-vargas') && (
+                <Grid item xs={12} sm={6} md={4}>
+                  <PoliticianCard 
+                    politician={{
+                      id: 'juan-vargas',
+                      name: 'Juan Vargas',
+                      party: 'Democrat',
+                      state: 'California',
+                      position: 'Representative',
+                      district: 'CA-52',
+                      photo_url: 'https://vargas.house.gov/sites/evo-subsites/vargas.house.gov/files/evo-media-image/Official%20Photo%20-%20Rep.%20Juan%20Vargas.jpg'
+                    }} 
+                  />
+                </Grid>
+              )}
+              
+              {/* If we're showing Tammy Baldwin but she's not in the politicians list, add a card for her */}
+              {showTammyBaldwin && !politicians.some(p => p.id === 'tammy-baldwin') && (
+                <Grid item xs={12} sm={6} md={4}>
+                  <PoliticianCard 
+                    politician={{
+                      id: 'tammy-baldwin',
+                      name: 'Tammy Baldwin',
+                      party: 'Democrat',
+                      state: 'Wisconsin',
+                      position: 'U.S. Senator',
+                      photo_url: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Tammy_Baldwin%2C_official_portrait%2C_113th_Congress.jpg'
+                    }} 
+                  />
+                </Grid>
+              )}
+              
+              {/* If we're showing John Barrasso but he's not in the politicians list, add a card for him */}
+              {showJohnBarrasso && !politicians.some(p => p.id === 'john-barrasso') && (
+                <Grid item xs={12} sm={6} md={4}>
+                  <PoliticianCard 
+                    politician={{
+                      id: 'john-barrasso',
+                      name: 'John Barrasso',
+                      party: 'Republican',
+                      state: 'Wyoming',
+                      position: 'U.S. Senator',
+                      photo_url: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/John_Barrasso_official_portrait_112th_Congress.jpg'
+                    }} 
+                  />
+                </Grid>
+              )}
+              
+              {/* If we're showing Michael Bennet but he's not in the politicians list, add a card for him */}
+              {showMichaelBennet && !politicians.some(p => p.id === 'michael-bennet') && (
+                <Grid item xs={12} sm={6} md={4}>
+                  <PoliticianCard 
+                    politician={{
+                      id: 'michael-bennet',
+                      name: 'Michael Bennet',
+                      party: 'Democrat',
+                      state: 'Colorado',
+                      position: 'U.S. Senator',
+                      photo_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Michael_Bennet_Official_Photo.jpg/800px-Michael_Bennet_Official_Photo.jpg'
+                    }} 
+                  />
+                </Grid>
+              )}
+              
               {politicians.map((politician) => (
                 <Grid item xs={12} sm={6} md={4} key={politician.id}>
                   <PoliticianCard politician={politician} />

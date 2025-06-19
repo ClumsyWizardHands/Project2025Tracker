@@ -12,6 +12,10 @@ const sequelize = require('../config/database');
  * @property {number} public_engagement_score - Public engagement score (0-100)
  * @property {number} social_media_score - Social media score (0-100)
  * @property {number} consistency_score - Consistency score (0-100)
+ * @property {number} strategic_integrity_score - Strategic integrity score (0-100)
+ * @property {number} infrastructure_understanding_score - Infrastructure understanding score (0-100)
+ * @property {number} performance_vs_impact_score - Performance vs impact score (0-100)
+ * @property {string} resistance_level - Resistance level classification
  * @property {number} days_of_silence - Days since last activity
  * @property {Date} last_activity_date - Date of last recorded activity
  * @property {Date} last_calculated - When the score was last calculated
@@ -27,7 +31,7 @@ const PoliticianScore = sequelize.define(
       primaryKey: true,
     },
     politician_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING(20),
       allowNull: false,
       references: {
         model: 'politicians',
@@ -83,6 +87,38 @@ const PoliticianScore = sequelize.define(
         max: 100,
       },
     },
+    // New fields for enhanced scoring
+    strategic_integrity_score: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        min: 0,
+        max: 100,
+      },
+    },
+    infrastructure_understanding_score: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        min: 0,
+        max: 100,
+      },
+    },
+    performance_vs_impact_score: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        min: 0,
+        max: 100,
+      },
+    },
+    resistance_level: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      validate: {
+        isIn: [['Defender', 'Active Resistor', 'Inconsistent Advocate', 'Complicit Enabler']]
+      }
+    },
     days_of_silence: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -136,10 +172,68 @@ PoliticianScore.prototype.getStatus = function() {
   }
 };
 
+// Get resistance level based on scores
+PoliticianScore.prototype.getResistanceLevel = function() {
+  if (this.resistance_level) {
+    return this.resistance_level;
+  }
+  
+  // Calculate resistance level if not already set
+  if (this.total_score >= 80 && this.strategic_integrity_score >= 70) {
+    return 'Defender';
+  } else if (this.total_score >= 60) {
+    return 'Active Resistor';
+  } else if (this.total_score >= 40) {
+    return 'Inconsistent Advocate';
+  } else {
+    return 'Complicit Enabler';
+  }
+};
+
+// Get detailed assessment
+PoliticianScore.prototype.getDetailedAssessment = function() {
+  return {
+    total_score: this.total_score,
+    status: this.getStatus(),
+    resistance_level: this.getResistanceLevel(),
+    category_scores: {
+      public_statements: this.public_statements_score,
+      legislative_action: this.legislative_action_score,
+      public_engagement: this.public_engagement_score,
+      social_media: this.social_media_score,
+      consistency: this.consistency_score
+    },
+    enhanced_metrics: {
+      strategic_integrity: this.strategic_integrity_score,
+      infrastructure_understanding: this.infrastructure_understanding_score,
+      performance_vs_impact: this.performance_vs_impact_score
+    },
+    temporal_data: {
+      days_of_silence: this.days_of_silence,
+      last_activity_date: this.last_activity_date,
+      last_calculated: this.last_calculated
+    }
+  };
+};
+
 // Static methods
 PoliticianScore.findByPoliticianId = async function(politicianId) {
   return await this.findOne({
     where: { politician_id: politicianId }
+  });
+};
+
+// Get politicians by resistance level
+PoliticianScore.findByResistanceLevel = async function(level, limit = 20) {
+  return await this.findAll({
+    where: { resistance_level: level },
+    limit,
+    order: [['total_score', 'DESC']],
+    include: [{
+      model: sequelize.models.Politician,
+      as: 'politician',
+      attributes: ['id', 'name', 'party', 'state', 'position', 'photo_url']
+    }]
   });
 };
 
